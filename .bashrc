@@ -134,3 +134,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export GITAWAREPROMPT=$mydirbash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
+
