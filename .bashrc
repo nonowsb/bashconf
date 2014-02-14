@@ -1,5 +1,18 @@
 #repertoire emplacement du depot bash
 mydirbash=~/bashconf
+export TERM=xterm-256color
+source $mydirbash/colors.sh
+
+logo=true
+
+if [[ -n "$EMACS" ]]; then
+    logo=false
+    echo "✖EMACS TERM $EMACS✖"
+    export TERM=xterm-256color
+    alias emacs="emacsclient --no-wait"
+    export EDITOR="emacsclient --no-wait"
+    export VISUAL="emacsclient"
+fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -59,11 +72,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+#if [ "$color_prompt" = yes ]; then
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -96,6 +109,7 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+if [ "$logo" == true ]; then
 echo "
  -------------------------------
 |  ╔╦╦╦═╦╗╔═╦═╦══╦═╗ (\__/)     |
@@ -103,6 +117,8 @@ echo "
 |  ╚══╩═╩═╩═╩═╩╩╩╩═╝ (,,)_(,,)  |
 |    to arnaud.wsb              | 
  -------------------------------"
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -136,8 +152,10 @@ if ! shopt -oq posix; then
 fi
 
 export GITAWAREPROMPT=$mydirbash/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
-PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+source $GITAWAREPROMPT/prompt.sh
+#PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+PS1="\n\[$txt256pink\]╔ \[$txtcyn\]\u@\h \[$txt256orange\]\w \[$bld256ylw01\]✿\$git_branch\[$bld256pink\]\$git_dirty\[$txtrst\] \n\[$txt256pink\]╚ \[$bld256ylw01\]●══► ϟ \[$txtrst\]"
+
 export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 
 
