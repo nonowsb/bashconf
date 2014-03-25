@@ -23,6 +23,9 @@ alias phperror='tail -f /var/log/apache2/error.log | perl -pe "s/\[[0-9a-zA-Z:\s
 alias phperrors=phperror
 
 
+#git
+alias git-diff-tools='git difftool -g -d '
+
 #functions:
 
 alias s='find . -type f -print0 | xargs -0 -e grep -nH -e '
