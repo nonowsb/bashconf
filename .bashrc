@@ -136,6 +136,10 @@ if [ -f $mydirbash/.bash_aliases_private ]; then
     . $mydirbash/.bash_aliases_private
 fi
 
+if [ -f $mydirbash/completion/.django_bash_completion.sh ]; then
+    . $mydirbash/completion/.django_bash_completion.sh
+fi
+
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
