@@ -110,13 +110,15 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 if [ "$logo" == true ]; then
+echo -e "$bakblk $txt256orange"
 echo "
- -------------------------------
-|  ╔╦╦╦═╦╗╔═╦═╦══╦═╗ (\__/)     |
-|  ║║║║╩╣╚╣═╣║║║║║╩╣ (='.'=)    |
-|  ╚══╩═╩═╩═╩═╩╩╩╩═╝ (,,)_(,,)  |
-|    to arnaud.wsb              | 
- -------------------------------"
+╔═══(✪)═════════════════════════╗
+▓▒░╔╦╦╦═╦╗╔═╦═╦══╦═╗ (\__/)   ░▒▓
+▓▒░║║║║╩╣╚╣═╣║║║║║╩╣ (='.'=)  ░▒▓
+▓▒░╚══╩═╩═╩═╩═╩╩╩╩═╝ (,,)_(,,)░▒▓
+▓▒░  to arnaud.wsb            ░▒▓
+╚════════════════════════(✪)════╝"
+echo -e "$txtrst"
 fi
 
 # Alias definitions.
@@ -158,7 +160,11 @@ fi
 export GITAWAREPROMPT=$mydirbash/git-aware-prompt
 source $GITAWAREPROMPT/prompt.sh
 #PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-PS1="\n\[$txt256pink\]╔ \[$txtcyn\]\u@\h \[$txt256orange\]\w \[$bld256ylw01\]✿\$git_branch\[$bld256pink\]\$git_dirty\[$txtrst\] \n\[$txt256pink\]╚ \[$bld256ylw01\]●══► ϟ \[$txtrst\]"
+#PS1="\n\[$txt256pink\]╔ \[$txtcyn\]\u@\h \[$txt256orange\]\w \[$bld256ylw01\]✿\$git_branch\[$bld256pink\]\$git_dirty\[$txtrst\] \n\[$txt256pink\]╚ \[$bld256ylw01\]●══► ϟ \[$txtrst\]"
+
+#PS1="\n\[$txt256pink\]╔ \[$txtcyn\]\u@\h \[$txt256orange\]\w \[$bld256ylw01\]✿\$git_branch\[$bld256pink\]\$git_dirty\[$txtrst\] \n\[$txt256pink\]╚ \[$bld256ylw01\] ► ϟ \[$txtrst\]"
+
+PS1="\n\[$txt256pink\]╔ \[$txtcyn\]\u@\h ✿ \[$txt256orange\]\w \[$bld256ylw01\]├┘\$git_branch\[$bld256pink\]\$git_dirty\[$txtrst\] \n\[$txt256pink\]╚ \[$bld256ylw01\] ► ϟ \[$txtrst\]"
 
 export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 

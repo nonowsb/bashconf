@@ -5,7 +5,7 @@ find_git_branch() {
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
-    git_branch="($branch)"
+    git_branch="$branch"
   else
     git_branch=""
   fi
@@ -14,7 +14,9 @@ find_git_branch() {
 find_git_dirty() {
   local status=$(git status --porcelain 2> /dev/null)
   if [[ "$status" != "" ]]; then
-    git_dirty='彡'
+    local NUMOFLINES=$(git status --porcelain | wc -l )
+    #git_dirty='彡'
+    git_dirty="● "$NUMOFLINES" changes"
   else
     git_dirty=''
   fi
