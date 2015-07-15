@@ -39,6 +39,14 @@ alias fileNoM="perl -pi -e 's/\r\n/\n/'"
 alias diskspace='df -h'
 alias filesize='du -sh'
 
+#python
+#python beautify, need to install autopep8
+#https://pypi.python.org/pypi/autopep8/
+#pip install --upgrade autopep8
+alias pyfy='autopep8 -i'
+
+alias pandocpdfsample='pandoc -V geometry:"a4paper, margin=2cm" -t latex -o outfile.pdf infile.md'
+
 #ASTUCES awk et boucles
 #for i in 1 2 3; do echo $i; done;
 #for i in $(ls); do echo $i; done;
